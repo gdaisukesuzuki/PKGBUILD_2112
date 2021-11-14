@@ -1,0 +1,34 @@
+*** cudf/cpp/cmake/thirdparty/get_thrust.cmake-dist	2021-09-08 00:34:44.016595987 +0900
+--- cudf/cpp/cmake/thirdparty/get_thrust.cmake	2021-09-08 00:35:12.397103047 +0900
+***************
+*** 62,67 ****
+      rapids_export_find_package_root(INSTALL Thrust [=[${CMAKE_CURRENT_LIST_DIR}/../../../include/libcudf/Thrust/]=] cudf-exports)
+  endfunction()
+  
+! set(CUDF_MIN_VERSION_Thrust 1.12.0)
+  
+  find_and_configure_thrust(${CUDF_MIN_VERSION_Thrust})
+--- 62,67 ----
+      rapids_export_find_package_root(INSTALL Thrust [=[${CMAKE_CURRENT_LIST_DIR}/../../../include/libcudf/Thrust/]=] cudf-exports)
+  endfunction()
+  
+! set(CUDF_MIN_VERSION_Thrust 1.15.0)
+  
+  find_and_configure_thrust(${CUDF_MIN_VERSION_Thrust})
+*** cudf/cpp/cmake/thirdparty/get_dlpack.cmake-dist	2021-11-02 16:12:04.554971413 +0900
+--- cudf/cpp/cmake/thirdparty/get_dlpack.cmake	2021-11-02 16:12:13.538374641 +0900
+***************
+*** 32,37 ****
+      endif()
+  endfunction()
+  
+! set(CUDF_MIN_VERSION_dlpack 0.5)
+  
+  find_and_configure_dlpack(${CUDF_MIN_VERSION_dlpack})
+--- 32,37 ----
+      endif()
+  endfunction()
+  
+! set(CUDF_MIN_VERSION_dlpack 0.6)
+  
+  find_and_configure_dlpack(${CUDF_MIN_VERSION_dlpack})
