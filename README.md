@@ -23,5 +23,6 @@ a  procedure of building NVIDIA's [RAPIDS](https://rapids.ai/) under Arch Linux 
 Operation is not necessarily guaranteed. The author are not responsible for any damage of your environment by any of the operations described here.
 
 
-(Sorry Under Construction)
-![image](https://user-images.githubusercontent.com/22126980/136666614-3617bc76-68a9-4d9f-a321-bcf0100f3433.png)
+
+Dependencies
+![image](https://user-images.githubusercontent.com/22126980/141688817-6d61777a-f5c9-428c-8ede-336f98119c9b.png)
