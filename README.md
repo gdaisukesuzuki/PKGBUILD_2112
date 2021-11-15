@@ -1,4 +1,4 @@
-# PKGBUILD_2112
+# PKGBUILD_rapidsai_2112
 
 PKGBUILD's for building NVIDIA's RAPIDS 21.12 (cuML/cuDF/cugraph) on Arch Linux + CUDA11.5
 a  procedure of building NVIDIA's [RAPIDS](https://rapids.ai/) under Arch Linux with CUDA environment.
