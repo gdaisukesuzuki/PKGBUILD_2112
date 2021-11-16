@@ -25,4 +25,4 @@ Operation is not necessarily guaranteed. The author are not responsible for any 
 
 
 Dependencies
-![image](https://user-images.githubusercontent.com/22126980/142001300-9c1d24f9-fa68-4b4e-9ce6-5668948a737f.png)
+![image](https://user-images.githubusercontent.com/22126980/142001402-6b223327-25d0-4ea6-8a48-be206baf61db.png)
