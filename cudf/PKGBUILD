@@ -16,7 +16,7 @@ url="https://rapids.ai/"
 license=('custom')
 # depends=('arrow-cuda>=3.0.0' 'nccl' 'cuda' 'cmake' 'boost-libs'  'protobuf' )
 # depends=('nccl' 'cuda' 'cmake' 'boost-libs')
-depends=('rmm' 'arrow-cuda'  'nccl' 'cuda' 'cmake' 'boost-libs')
+depends=('nvcomp' 'cumlprims' 'arrow-cuda'  'nccl' 'cuda' 'cmake' 'boost-libs')
 # depends=('arrow-cuda' 'rmm' 'nccl' 'cuda' 'cmake' 'boost-libs')
 # depends=('arrow-cuda>=1.0.0' 'nccl' 'cuda' 'cmake' 'rmm' 'dlpack' 'boost-libs'  'protobuf' )
 # provides=('cudf' )
@@ -141,12 +141,16 @@ package_cudf() {
   install -Dm644 ${srcdir}/cudf/LICENSE ${pkgdir}/usr/share/licenses/cudf/LICENSE
   rm -rf ${pkgdir}/usr/lib/cmake/rmm
   rm -rf ${pkgdir}/usr/include/rmm
+  rm -rf ${pkgdir}/usr/include/nvcomp
+  rm -rf ${pkgdir}/usr/include/nvcomp.h
+  rm -rf ${pkgdir}/usr/include/nvcomp.hpp
+  
   # rm -rf ${pkgdir}/usr/include/rapids
   rm -rf ${pkgdir}/usr/include/cuco
-  # rm -rf ${pkgdir}/usr/lib/cmake/libcudacxx
+  rm -rf ${pkgdir}/usr/lib/cmake/nvcomp
   rm -rf ${pkgdir}/usr/lib/cmake/cuco
   rm -rf ${pkgdir}/usr/lib/cmake/cub
-  # rm ${pkgdir}/usr/lib/libcudftestutil.a
+  rm ${pkgdir}/usr/lib/libnvcomp.a
   # install -Dm755 ${srcdir}/lib/libcudf.so ${pkgdir}/usr/lib
   # install -Dm644 ${srcdir}/lib/libcudftestutil.a ${pkgdir}/usr/lib
 

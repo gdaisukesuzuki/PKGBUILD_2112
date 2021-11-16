@@ -17,13 +17,10 @@ optdepends=('libcutensor' 'cusparselt' 'python-cugraph')
 # source=("https://github.com/cupy/cupy/archive/v$_pkgver.tar.gz"
 # source=("git+https://github.com/cupy/cupy.git#tag=v$_pkgver"
 source=("git+https://github.com/cupy/cupy.git#tag=v${_pkgver}"
-        "cupy_cugraph.h.patch"
-        "python.patch"
         )
 
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+         )
 
 prepare() {
   # patch -p0 < CubCudaConfig.cmake.patch

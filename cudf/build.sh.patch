@@ -1,0 +1,36 @@
+*** cudf/build.sh-dist	2021-06-17 19:30:39.666396045 +0900
+--- cudf/build.sh	2021-06-17 19:40:22.807024850 +0900
+***************
+*** 150,155 ****
+--- 150,169 ----
+  
+      cmake -S $REPODIR/cpp -B ${LIB_BUILD_DIR} \
+            -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} \
++            -DCMAKE_C_COMPILER="/usr/bin/gcc" \
++           -DCMAKE_CXX_COMPILER="/usr/bin/g++" \
++           -DCMAKE_CUDA_HOST_COMPILER="/usr/bin/g++-10" \
++ 	  -DCMAKE_C_FLAGS="-O3 -pipe -fno-plt -fexceptions \
++         -Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS \
++         -Wformat \
++         -fstack-clash-protection -fcf-protection" \
++          -DCMAKE_CXX_FLAGS="-O3 -pipe -fno-plt -fexceptions \
++         -Wp,-D_FORTIFY_SOURCE=2,-D_GLIBCXX_ASSERTIONS \
++         -Wformat  \
++         -fstack-clash-protection -fcf-protection" \
++          -DCMAKE_CUDA_FLAGS="-O3 -pipe -fno-plt -Xcompiler=\"-O3  \
++         -Wformat -D_GLIBCXX_ASSERTIONS -D_FORTIFY_SOURCE=2 \
++         -fstack-clash-protection -fcf-protection\" " \
+            ${CUDF_CMAKE_CUDA_ARCHITECTURES} \
+            -DUSE_NVTX=${BUILD_NVTX} \
+            -DBUILD_TESTS=${BUILD_TESTS} \
+***************
+*** 159,164 ****
+--- 173,180 ----
+            -DCMAKE_BUILD_TYPE=${BUILD_TYPE}
+  
+      cd ${LIB_BUILD_DIR}
++     
++     find . -name flags.make | xargs  sed -i -e 's/--generate-code=arch=compute_60,code=\[sm_60\] --generate-code=arch=compute_70,code=\[sm_70\] --generate-code=arch=compute_75,code=\[sm_75\] --generate-code=arch=compute_80,code=\[compute_80,sm_80\]/--generate-code=arch=compute_86,code=\[compute_86,sm_86\]/g'
+  
+      cmake --build . -j${PARALLEL_LEVEL} ${VERBOSE_FLAG}
+  
