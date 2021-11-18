@@ -4,7 +4,7 @@
 # Contributor: pingplug <pingplug@foxmail.com>
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
-pkgname=(cugraph )
+pkgname=(cugraph python-cugraph)
 _pkgname=cugraph
 # _pkgname2=hornet
 pkgver=21.12
@@ -143,6 +143,18 @@ package_cugraph() {
 
 }
 
+package_python-cugraph(){
+  cd "${srcdir}"/cugraph/python/pylibcugraph
+  export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH:"${pkgdir}"/usr/lib/cugraph
+  CMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-10 \
+  python setup.py build_ext --library-dir="${srcdir}"/cugraph/cpp/build --include-dir="${srcdir}"/cugraph/cpp/include -j12 install  --single-version-externally-managed --record=record.txt --prefix=/usr --root="${pkgdir}" --optimize=1
+  cd "${srcdir}"/cugraph/python/cugraph
+  CMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-10 \
+  python setup.py build_ext --library-dir="${srcdir}"/cugraph/cpp/build --include-dir="${srcdir}"/cugraph/cpp/include -j12 install  --single-version-externally-managed --record=record.txt --prefix=/usr --root="${pkgdir}" --optimize=1
+  # env CUGRAPH_BUILD_PATH=${CUGRAPH_BUILD_PATH} python setup.py install  --prefix=/usr --root="${pkgdir}" --optimize=1
+  install -Dm644 ${srcdir}/cugraph/LICENSE ${pkgdir}/usr/share/licenses/python-cugraph/LICENSE
+
+}
 
 
 
