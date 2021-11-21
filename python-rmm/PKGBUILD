@@ -23,7 +23,7 @@ depends=('cumlprims'  'cuda' 'cmake'
 # depends=('gcc9' 'cython' 'cuda' 'cmake' 'python-numba' 'spdlog')
 # source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git")
 # source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git#branch=branch-${_pkgver}"
-source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git"
+source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git#branch=branch-21.12"
      "python.patch"
   )
 

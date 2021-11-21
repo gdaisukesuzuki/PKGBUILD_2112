@@ -28,7 +28,7 @@ depends=('nvcomp' 'cumlprims' 'arrow-cuda'  'nccl' 'cuda' 'cmake' 'boost-libs')
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#branch=branch-${_pkgver}"
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git"
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#branch=branch-${_pkgver}"
-source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git"
+source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#branch=branch-21.12"
  "cu.patch"
  "cc.patch"
  "cmake.patch"
@@ -135,7 +135,7 @@ package_cudf() {
 #  cd "${srcdir}"/cudf/python/cudf
   # CUDA_HOME=/opt/cuda LD_LIBRARY_PATH=/opt/cuda/lib64:${LD_LIBRARY_PATH} python setup.py build_ext -j${PARALLEL_LEVEL:-1} --library-dir=${srcdir}/cudf/cpp/build install --single-version-externally-managed --record=record.txt --prefix=/usr --root="${pkgdir}"
 
-  make -j14 -C .  DESTDIR="${pkgdir}" install
+  make -j12 -C .  DESTDIR="${pkgdir}" install
 
 
   install -Dm644 ${srcdir}/cudf/LICENSE ${pkgdir}/usr/share/licenses/cudf/LICENSE

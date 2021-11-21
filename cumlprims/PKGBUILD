@@ -13,7 +13,8 @@ depends=('cuda')
 # source=(https://anaconda.org/nvidia/libcumlprims/21.06.00/download/linux-64/libcumlprims-21.06.00-cuda11.2_gfda2e6c_0.tar.bz2
 # source=(https://anaconda.org/rapidsai-nightly/libcumlprims/21.08.00a210804/download/linux-64/libcumlprims-21.08.00a210804-cuda11.4_g4db0971_5.tar.bz2
 source=(
-https://anaconda.org/rapidsai-nightly/libcumlprims/21.12.00a211112/download/linux-64/libcumlprims-21.12.00a211112-cuda11.5_gaff0dff_3.tar.bz2
+# https://anaconda.org/rapidsai-nightly/libcumlprims/21.12.00a211117/download/linux-64/libcumlprims-21.12.00a211117-cuda11_g7f89a95_6.tar.bz2
+https://anaconda.org/rapidsai-nightly/libcumlprims/21.12.00a211118/download/linux-64/libcumlprims-21.12.00a211118-cuda11_g7f89a95_6.tar.bz2
 "cc.patch" )
 sha512sums=('SKIP' 'SKIP')
 

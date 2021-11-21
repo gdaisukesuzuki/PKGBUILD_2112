@@ -23,7 +23,7 @@ depends=('cumlprims' 'treelite' 'faiss' 'cudf' 'nccl' 'cuda' 'cmake' 'boost-libs
 # makedepends=('python-cmake_setuptools' 'protobuf-static')
 # depends=('arrow-cudf<0.16.0' 'gcc8' 'cuda' 'cmake' 'rapids-rmm' 'dlpack' 'boost-libs')
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git"
-source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git"
+source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#branch=branch-21.12"
  "cc.patch" "cu.patch" "cmake.patch" "setup.py.patch")
 # source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#branch=branch-${_pkgver}" "cc.patch" "cu.patch" "cmake.patch")
 # source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#tag=v0.19.0")
@@ -74,7 +74,7 @@ export SINGLEGPU_CPP_FLAG=OFF
 export LIBCUML_BUILD_DIR="${srcdir}"/cuml/cpp/build
 export CUML_EXTRA_CMAKE_ARGS=""
 export INSTALL_PREFIX=/usr
-export PARALLEL_LEVEL=15
+export PARALLEL_LEVEL=12
 # export PARALLEL_LEVEL=$(nproc)
 export CUDA_HOME=/opt/cuda
 export CMAKE_LOG_LEVEL=true
