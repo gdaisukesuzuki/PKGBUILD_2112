@@ -7,16 +7,16 @@ pkgname=(cudf python-cudf)
 _pkgname=cudf
 # pkgver=0.19.2
 pkgver=21.12
-_pkgver=21.12
+_pkgver=21.12.00
 # _pkgver=0.19.2
-pkgrel=0
+pkgrel=1
 pkgdesc="RAPIDS Memory Manager"
 arch=('x86_64')
 url="https://rapids.ai/"
 license=('custom')
 # depends=('arrow-cuda>=3.0.0' 'nccl' 'cuda' 'cmake' 'boost-libs'  'protobuf' )
 # depends=('nccl' 'cuda' 'cmake' 'boost-libs')
-depends=('nvcomp' 'cumlprims' 'arrow-cuda'  'nccl' 'cuda' 'cmake' 'boost-libs')
+depends=('nvcomp' 'rmm' 'arrow-cuda'  'nccl' 'cuda' 'cmake' 'boost-libs')
 # depends=('arrow-cuda' 'rmm' 'nccl' 'cuda' 'cmake' 'boost-libs')
 # depends=('arrow-cuda>=1.0.0' 'nccl' 'cuda' 'cmake' 'rmm' 'dlpack' 'boost-libs'  'protobuf' )
 # provides=('cudf' )
@@ -28,7 +28,8 @@ depends=('nvcomp' 'cumlprims' 'arrow-cuda'  'nccl' 'cuda' 'cmake' 'boost-libs')
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#branch=branch-${_pkgver}"
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git"
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#branch=branch-${_pkgver}"
-source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#branch=branch-21.12"
+# source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#branch=branch-21.12"
+source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git#tag=v${_pkgver}"
  "cu.patch"
  "cc.patch"
  "cmake.patch"

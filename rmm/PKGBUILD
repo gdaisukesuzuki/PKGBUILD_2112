@@ -8,9 +8,9 @@ _pkgname=rmm
 #conflicts=(spdlog)
 # pkgver=0.19.0
 pkgver=21.12
-_pkgver=21.12
+_pkgver=21.12.00
 #_pkgver=0.19.0
-pkgrel=0
+pkgrel=1
 pkgdesc="RAPIDS Memory Manager"
 arch=('x86_64')
 url="https://rapids.ai/"
@@ -21,8 +21,8 @@ depends=(  'cuda' 'cmake'  )
 # depends=('spdlog' 'cython' 'cuda' 'cmake' 'python-numba' 'fmt')
 # depends=('gcc9' 'cython' 'cuda' 'cmake' 'python-numba' 'spdlog')
 # source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git")
-# source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git#branch=branch-${_pkgver}"
-source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git"
+# source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git"
+source=("${_pkgname}::git+https://github.com/rapidsai/rmm.git#tag=v${_pkgver}"
      "python.patch"
   )
 
@@ -51,7 +51,7 @@ package_rmm() {
               -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-10 \
               -DPER_THREAD_DEFAULT_STREAM=OFF \
               -DCMAKE_BUILD_TYPE=Release -B "${srcdir}"/rmm/build -S .
-cmake --build "${srcdir}"/rmm/build -j$(nproc)
+# cmake --build "${srcdir}"/rmm/build -j$(nproc)
 cmake --build "${srcdir}"/rmm/build  --target install DESTDIR="${pkgdir}"
 #  make DESTDIR="${pkgdir}" install
 #  mkdir -p ${pkgdir}/usr/lib
@@ -59,7 +59,9 @@ cmake --build "${srcdir}"/rmm/build  --target install DESTDIR="${pkgdir}"
 #  mkdir -p ${pkgdir}/usr/lib/pkgconfig
 #  mkdir -p ${pkgdir}/usr/include
 #  cd "${srcdir}"/rmm
-#  cp -pr include/rmm ${pkgdir}/usr/include
+  rm -rf ${pkgdir}/usr/include/rapids
+  rm -rf ${pkgdir}/usr/lib/cmake/thrust
+  rm -rf ${pkgdir}/usr/lib/cmake/cub
 
 
 
