@@ -1,20 +1,20 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Maintainer: Konstantin Gizdov <arch@kge.pw>
-pkgname=cumlprims
+pkgname=cumlprims-conda
+provides=(cumlprims)
 pkgver=21.12
-pkgrel=0
+pkgrel=1
 pkgdesc=""
 arch=('x86_64')
 url="https://anaconda.org/rapidsai-nightly/libcumlprims/files"
 license=('custom:NVIDIA')
-depends=('cuda')
+depends=('cuda' 'rmm')
 # options=(!strip staticlibs)
 # source=(https://anaconda.org/nvidia/libcumlprims/0.19.0/download/linux-64/libcumlprims-0.19.0-cuda11.2_ga2abf9f_0.tar.bz2)
 # source=(https://anaconda.org/nvidia/libcumlprims/21.06.00/download/linux-64/libcumlprims-21.06.00-cuda11.2_gfda2e6c_0.tar.bz2
 # source=(https://anaconda.org/rapidsai-nightly/libcumlprims/21.08.00a210804/download/linux-64/libcumlprims-21.08.00a210804-cuda11.4_g4db0971_5.tar.bz2
 source=(
-# https://anaconda.org/rapidsai-nightly/libcumlprims/21.12.00a211117/download/linux-64/libcumlprims-21.12.00a211117-cuda11_g7f89a95_6.tar.bz2
-https://anaconda.org/rapidsai-nightly/libcumlprims/21.12.00a211118/download/linux-64/libcumlprims-21.12.00a211118-cuda11_g7f89a95_6.tar.bz2
+https://anaconda.org/nvidia/libcumlprims/21.12.00/download/linux-64/libcumlprims-21.12.00-cuda11_g0a7f19f_0.tar.bz2
 "cc.patch" )
 sha512sums=('SKIP' 'SKIP')
 
@@ -27,5 +27,7 @@ package() {
   mkdir -p "${pkgdir}/usr/include"
   cp -alr include/*  "${pkgdir}/usr/include"
   cp -alr lib/*  "${pkgdir}/usr/lib"
+  rm -rf  "${pkgdir}/usr/include/rmm"
+  rm -rf  "${pkgdir}/usr/lib/cmake/rmm"
   chmod +x "${pkgdir}/usr/lib/libcumlprims.so"
 }

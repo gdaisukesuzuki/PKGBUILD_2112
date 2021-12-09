@@ -6,8 +6,8 @@
 pkgname=(cuml python-cuml)
 _pkgname=cuml
 pkgver=21.12
-_pkgver=21.12
-pkgrel=0
+_pkgver=21.12.00
+pkgrel=1
 pkgdesc="RAPIDS Memory Manager"
 arch=('x86_64')
 url="https://rapids.ai/"
@@ -23,7 +23,8 @@ depends=('cumlprims' 'treelite' 'faiss' 'cudf' 'nccl' 'cuda' 'cmake' 'boost-libs
 # makedepends=('python-cmake_setuptools' 'protobuf-static')
 # depends=('arrow-cudf<0.16.0' 'gcc8' 'cuda' 'cmake' 'rapids-rmm' 'dlpack' 'boost-libs')
 # source=("${_pkgname}::git+https://github.com/rapidsai/cudf.git"
-source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#branch=branch-21.12"
+# source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#branch=branch-21.12"
+source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#tag=v${_pkgver}"
  "cc.patch" "cu.patch" "cmake.patch" "setup.py.patch")
 # source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#branch=branch-${_pkgver}" "cc.patch" "cu.patch" "cmake.patch")
 # source=("${_pkgname}::git+https://github.com/rapidsai/cuml.git#tag=v0.19.0")
