@@ -2,9 +2,9 @@
 pkgname=python-cupy
 _pkgname=cupy
 pkgver=10.0.0
-_pkgver=10.0.0rc1
+_pkgver=10.0.0
 # _cubver=1.12.1
-pkgrel=0
+pkgrel=1
 pkgdesc="NumPy-like API accelerated with CUDA"
 _github="cupy/cupy"
 url="https://cupy.dev"
@@ -19,13 +19,10 @@ optdepends=('libcutensor' 'cusparselt' 'python-cugraph')
 source=("git+https://github.com/cupy/cupy.git#tag=v${_pkgver}"
         )
 
-md5sums=('SKIP'
-         )
+md5sums=('SKIP')
 
 prepare() {
   # patch -p0 < CubCudaConfig.cmake.patch
-#  patch -p0 < python.patch
-#  patch -p0 < cupy_cugraph.h.patch
   cd "$srcdir/$_pkgname"
   #ln -srf "$srcdir/cub-$_cubver" cupy/_core/include/cupy/cub
   # export CC=/opt/cuda/bin/gcc
@@ -39,7 +36,7 @@ prepare() {
 #  export CC=/usr/bin/gcc-10
 #  export CXX=/usr/bin/g++-10
 #   export CUPY_NVCC_GENERATE_CODE="arch=compute_86,code=sm_86" 
-   export CUPY_NVCC_GENERATE_CODE=current
+  export CUPY_NVCC_GENERATE_CODE=current
   export CUDA_HOME=/opt/cuda
   export CUDA_PATH=/opt/cuda
   cd "$srcdir/$_pkgname/cupy/_core/include/cupy/cub"
