@@ -6,7 +6,7 @@
 pkgname=(python-nvtx)
 _pkgname=nvtx
 pkgver=0.2.3
-pkgrel=0
+pkgrel=1
 pkgdesc="NVIDIA Tool Extension Library"
 arch=('x86_64')
 url="https://nvidia.github.io/NVTX/doxygen/index.html"

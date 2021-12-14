@@ -4,7 +4,7 @@
 _pkg=arrow-apache-arrow
 pkgname=(arrow-cuda python-pyarrow-cuda)
 pkgver=6.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Columnar in-memory analytics layer for big data."
 arch=(x86_64)
 url="https://arrow.apache.org"

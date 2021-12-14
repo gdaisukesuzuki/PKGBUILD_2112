@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
 pkgver=1.7.1
-pkgrel=3
+pkgrel=5
 options=('staticlibs')
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git#tag=v${pkgver}
      'cmake.patch')
@@ -49,7 +49,7 @@ build() {
   export CUDAHOSTCXX=/usr/bin/g++-10
   make -C . -j12 faiss swigfaiss
   cd faiss/python
-  python setup.py build
+  # python setup.py build
 }
 
 package_faiss() {
@@ -73,8 +73,8 @@ package_python-faiss() {
   depends=('python' 'python-numpy' 'faiss')
 
   cd "${srcdir}/${_pkgname}/build/faiss/python"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  cd ../../..
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py --verbose build_ext -j12 --library-dir=${pkgdir}/../faiss/usr/lib --include-dir=${pkgdir}/../faiss/usr/include  install --single-version-externally-managed --record=record.txt --prefix=/usr --root="${pkgdir}" 
+ # install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
