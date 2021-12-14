@@ -91,3 +91,24 @@
           locals = PyEval_GetLocals();
           if (locals == NULL) {
               goto CLEANUP;
+*** numba/numba/__init__.py-dist	2021-12-14 15:59:27.158838089 +0900
+--- numba/numba/__init__.py	2021-12-14 15:59:59.132782025 +0900
+***************
+*** 134,141 ****
+  
+      if numpy_version < (1, 17):
+          raise ImportError("Numba needs NumPy 1.17 or greater")
+!     elif numpy_version > (1, 20):
+!         raise ImportError("Numba needs NumPy 1.20 or less")
+  
+      try:
+          import scipy
+--- 134,141 ----
+  
+      if numpy_version < (1, 17):
+          raise ImportError("Numba needs NumPy 1.17 or greater")
+!     elif numpy_version > (1, 23):
+!         raise ImportError("Numba needs NumPy 1.23 or less")
+  
+      try:
+          import scipy
