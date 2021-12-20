@@ -1,8 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-numba
-pkgver=0.54.1
-# pkgver=0.55.0
-pkgrel=2
+pkgver=0.55.0rc1
+pkgrel=1
 pkgdesc="NumPy aware dynamic Python compiler using LLVM"
 url="https://numba.pydata.org/"
 arch=('i686' 'x86_64')
@@ -11,24 +10,22 @@ depends=('python-llvmlite>=0.37.0' 'python-llvmlite<0.39' 'python-numpy>=1.17')
 makedepends=('cython' 'python-setuptools')
 optdepends=('python-scipy>=1.0.0')
 #source=(numba-$pkgver.tar.gz::"https://github.com/numba/numba/archive/$pkgver.tar.gz")
-#source=("numba::git+https://github.com/numba/numba.git")
-source=("numba::git+https://github.com/numba/numba.git#tag=${pkgver}" "setup.py.patch")
-#sha256sums=('SKIP')
-sha256sums=('SKIP' 'SKIP')
+source=(numba-$pkgver.zip::https://github.com/numba/numba/archive/refs/tags/${pkgver}.zip )
+sha256sums=('SKIP')
 
 build() {
-  patch -p0 < setup.py.patch
-  cd "$srcdir/numba"
+#  patch -p0 < setup.py.patch
+  cd "$srcdir/numba-$pkgver"
   # tbb 2021.1 required, but arch still has 2020.3
   NUMBA_DISABLE_TBB=1 python setup.py build
 }
 
 check_disabled() { #ERROR: TypeError None is not callable
-  cd "$srcdir/numba"
+  cd "$srcdir/numba-$pkgver"
   python setup.py test
 }
 
 package() {
-  cd "$srcdir/numba"
+  cd "$srcdir/numba-$pkgver"
   python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
 }
